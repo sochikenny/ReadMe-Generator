@@ -49,11 +49,58 @@ const questions = [
 ];
 
 function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err){
+        if (err){
+            console.error(err);
+        }
+    });
+
+}
+
+function init() {
+    inquirer.prompt(questions)
+    .then(function(answers) {
+      console.log(answers);
+  
+      api.getUser(answers.github)
+      .then(function() {
+        console.log("Success");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+
+    });
+
 }
 
 function init() {
 
-}
+    //ask questions in the console
+    // .then stores the response in the terminal
+    inquirer.prompt(questions)
+    .then((answers)=>{
+    console.log("User Answer Object", answers)
+
+      // calls the api and passes the github login from the user.
+      api.getUser(answers.github)
+      .then((githubData) => { 
+        // this allows us to only get the data in the githubdata
+        var githubProfile = githubData.data;
+        // Combining all of our data. "..." allows us to add it to one
+        var allData = {...answers, ...githubProfile}
+        
+        var readmetext = generateMarkdown(allData);
+        writeToFile("ReadMeFile.md", readmetext)
+
+       })
+   
+
+    });
+
+
+
+};
 
 init();
 
