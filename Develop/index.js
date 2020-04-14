@@ -1,7 +1,7 @@
 const fs = require('fs'); 
 const inquirer = require("inquirer");
 const api = require('./utils/api');
-const generateReadMeFile = require("./utils/generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 const questions = [
     {
@@ -53,54 +53,31 @@ function writeToFile(fileName, data) {
         if (err){
             console.error(err);
         }
-    });
-
-}
-
-function init() {
-    inquirer.prompt(questions)
-    .then(function(answers) {
-      console.log(answers);
-  
-      api.getUser(answers.github)
-      .then(function() {
-        console.log("Success");
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
 
     });
 
 }
 
-function init() {
+function promptUser() {
+    return inquirer.prompt(questions)    
+}
 
-    //ask questions in the console
-    // .then stores the response in the terminal
-    inquirer.prompt(questions)
-    .then((answers)=>{
-    console.log("User Answer Object", answers)
+async function init() {
 
-      // calls the api and passes the github login from the user.
-      api.getUser(answers.github)
-      .then((githubData) => { 
-        // this allows us to only get the data in the githubdata
-        var githubProfile = githubData.data;
-        // Combining all of our data. "..." allows us to add it to one
-        var allData = {...answers, ...githubProfile}
+    try{
+        const answers = await promptUser();
+        const user = await api.getUser();
+        const ReadMe = generateMarkdown(answers, user);
+        writeToFile("ReadMeFile.md", ReadMe);
+        console.log("***ReadMe file created!***");
         
-        var readmetext = generateMarkdown(allData);
-        writeToFile("ReadMeFile.md", readmetext)
+    }
+    catch(err){
+        console.log(err);
 
-       })
-   
-
-    });
-
-
-
-};
+    }
+    
+}
 
 init();
 
