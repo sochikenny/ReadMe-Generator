@@ -6,7 +6,7 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const questions = [
     {
         type: "input",
-        name: "github",
+        name: "GitHub",
         message: "What is your GitHub username?"
       },
       {
@@ -66,7 +66,7 @@ async function init() {
 
     try{
         const answers = await promptUser();
-        const user = await api.getUser();
+        const user = await api.getUser(answers.GitHub);
         const ReadMe = generateMarkdown(answers, user);
         writeToFile("ReadMeFile.md", ReadMe);
         console.log("***ReadMe file created!***");
