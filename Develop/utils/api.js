@@ -3,11 +3,7 @@ const api = {
   getUser() {
     const username = "sochikenny";
     const queryUrl = `https://api.github.com/users/${username}`
-    axios.get(queryUrl).then(function (res) {
-      const user = res.data
-      return user;
-    });
-   
+    return axios.get(queryUrl);
   }
 
 };

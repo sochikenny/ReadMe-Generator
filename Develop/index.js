@@ -66,10 +66,14 @@ async function init() {
 
     try{
         const answers = await promptUser();
-        const user = await api.getUser(answers.GitHub);
-        const ReadMe = generateMarkdown(answers, user);
-        writeToFile("ReadMeFile.md", ReadMe);
-        console.log("***ReadMe file created!***");
+         api.getUser().then(function (res){ 
+            const user = res.data
+            //console.log(user)    
+            const ReadMe = generateMarkdown(answers, user);
+            writeToFile("ReadMeFile.md", ReadMe);
+            console.log("***ReadMe file created!***");
+          })
+        
         
     }
     catch(err){

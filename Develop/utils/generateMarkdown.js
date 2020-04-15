@@ -1,9 +1,11 @@
-function generateMarkdown(data) {
+// const api = require("./api");
+
+function generateMarkdown(answers, user) {
   return `
-# ${data.title}
+# ${answers.title}
 
 ## Description
-${data.description}
+${answers.description}
 
 ## Table of Contents
 
@@ -24,45 +26,47 @@ ${data.description}
 ------------
 
 ## Installation
-${data.installation}
+${answers.installation}
 
 ------------
 
 ## Usage
-${data.usage}
+${answers.usage}
 
 ------------
 
 ## License
-${data.license}
+${answers.license}
 
 ------------
 
 ## Badges
-${data.badges}
+${answers.badges}
 
 ------------
 
 ## Contributing
-${data.contributing}
+${answers.contributing}
 
 ------------
 
 ## Tests
-${data.tests}
+${answers.tests}
 
 ------------
 
 ## Questions
-${data.questions}
+${answers.questions}
 
 ------------
 
 ### Contact Me
-![](${data.avatar_url})
-* email:  ${data.email}
+![](${user.avatar_url})
+* email: ${user.email}
 `;
 
 }
 
 module.exports = generateMarkdown
+
+
