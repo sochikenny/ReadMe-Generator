@@ -23,42 +23,42 @@ ${answers.description}
 
 *[Questions](#questions) \n
 
-------------
+---
 
 ## Installation
 ${answers.installation}
 
-------------
+---
 
 ## Usage
 ${answers.usage}
 
-------------
+---
 
 ## License
 ${answers.license}
 
-------------
+---
 
 ## Badges
 ${answers.badges}
 
-------------
+---
 
 ## Contributing
 ${answers.contributing}
 
-------------
+---
 
 ## Tests
 ${answers.tests}
 
-------------
+---
 
 ## Questions
 ${answers.questions}
 
-------------
+---
 
 ### Contact Me
 ![](${user.avatar_url})

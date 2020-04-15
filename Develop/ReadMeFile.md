@@ -27,42 +27,42 @@ This project focuses on the creation of a command-line application that dynamica
 *[Questions](#questions) 
 
 
-------------
+---
 
 ## Installation
 undefined
 
-------------
+---
 
 ## Usage
 undefined
 
-------------
+---
 
 ## License
 undefined
 
-------------
+---
 
 ## Badges
 undefined
 
-------------
+---
 
 ## Contributing
 If you would like to contribute, please contact me!
 
-------------
+---
 
 ## Tests
 undefined
 
-------------
+---
 
 ## Questions
 undefined
 
-------------
+---
 
 ### Contact Me
 ![](https://avatars0.githubusercontent.com/u/59304853?v=4)
